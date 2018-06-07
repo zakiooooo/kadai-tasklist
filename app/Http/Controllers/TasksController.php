@@ -128,7 +128,7 @@ class TasksController extends Controller
                     'content' => 'required|max:191',
                 ]);
                 
-                $task = task::find($id);
+                $task = Task::find($id);
                 $task->status = $request->status;
                 $task->content = $request->content;
                 $task->save();
@@ -149,7 +149,7 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-        $task = task::find($id);
+        $task = Task::find($id);
         if (\Auth::user()->id === $task->user_id) {
             $task->delete();
         }
